@@ -1,9 +1,6 @@
 #include <iostream>
 #include "gui.hpp"
 #include "libs/imgui/include/imgui.h"
-static void glfw_error_callback(int error, const char* description) {
-    fprintf(stderr, "GLFW Error %d: %s\n", error, description);
-}
 
 static void DrawMenu() {
     static bool opened = true;
