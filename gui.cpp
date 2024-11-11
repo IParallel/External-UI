@@ -125,7 +125,6 @@ void gui::Loop() {
         // ImGui Draw
         if (show_window) {
             drawCallback();
-            std::cout << "X: " << gui::lastWindowPos.x << " Y: " << gui::lastWindowPos.y << "\n";
         }
 
         ImGuiContext* context = ImGui::GetCurrentContext();
