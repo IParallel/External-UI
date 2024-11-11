@@ -1,5 +1,6 @@
 #pragma once
 #include <GLFW/glfw3.h>
+#include "libs/imgui/include/imgui.h"
 
 namespace gui {
 	inline GLFWwindow* window{};
@@ -10,7 +11,7 @@ namespace gui {
 	inline void (*beforeCreatingWindowCallback)(void) = nullptr;
 	inline void (*beforeCreatingContextCallback)(void) = nullptr;
 	inline void (*afterCreatingContextCallback)(void) = nullptr;
-	inline void (*drawCallback)(void) = nullptr;
+	inline void (*drawCallback)(void) = nullptr; 
 
 	bool Init();
 	void BeforeCreatingWindow(void(*callback)(void));

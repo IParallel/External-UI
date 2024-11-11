@@ -41,14 +41,14 @@ bool gui::Init() {
     // only glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // 3.0+ only
 #endif
 
-    /* Create a windowed mode window and its OpenGL context */
     if (beforeCreatingWindowCallback != nullptr)
         beforeCreatingWindowCallback();
 
-    glfwWindowHint(GLFW_TRANSPARENT_FRAMEBUFFER, GLFW_TRUE);
-    glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE);
-    glfwWindowHint(GLFW_FLOATING, GLFW_TRUE);
+    glfwWindowHint(GLFW_TRANSPARENT_FRAMEBUFFER, GLFW_TRUE); // Transparent Background
+    glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE); // Window Start Maximized
+    glfwWindowHint(GLFW_FLOATING, GLFW_TRUE); // Window is top-most
 
+    /* Create a windowed mode window and its OpenGL context */
     window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
     if (!window) {
         glfwTerminate();
@@ -71,6 +71,7 @@ bool gui::Init() {
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
     io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;      // Enable docking
     io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
+    io.ConfigViewportsNoTaskBarIcon = true;
 
     ImGui::StyleColorsDark();
 
@@ -104,6 +105,7 @@ void gui::DrawCallback(void(*callback)(void)) {
 
 void gui::Loop() {
     bool passing_through = true;
+    int w, h, wx, wy;
     while (!glfwWindowShouldClose(window)) {
         //std::this_thread::sleep_for(std::chrono::milliseconds(1));
         if (show_window && passing_through) {
@@ -123,6 +125,7 @@ void gui::Loop() {
         // ImGui Draw
         if (show_window) {
             drawCallback();
+            std::cout << "X: " << gui::lastWindowPos.x << " Y: " << gui::lastWindowPos.y << "\n";
         }
 
         ImGuiContext* context = ImGui::GetCurrentContext();

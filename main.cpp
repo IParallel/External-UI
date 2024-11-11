@@ -7,7 +7,7 @@ static void DrawMenu() {
 
     ImGui::SetNextWindowSize(ImVec2{ 800, 600 }, ImGuiCond_FirstUseEver);
     ImGui::Begin("Test", &opened);
-    ImGui::Button("Send Nudes");
+    ImGui::Button("Test Btn");
     ImGui::End();
 
     if (!opened) {
